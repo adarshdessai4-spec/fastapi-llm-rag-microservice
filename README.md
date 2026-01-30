@@ -1,4 +1,4 @@
-# FastAPI LLM-RAG Microservice (Interview Showcase)
+# FastAPI LLM-RAG Microservice
 
 A production-minded **Python/FastAPI** backend service that demonstrates:
 - **REST APIs** + clean layering (routers/services/schemas)
