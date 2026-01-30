@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 from cachetools import TTLCache
@@ -14,7 +14,9 @@ class ChatService:
     store: FaissVectorStore
     embedder: Embedder
     llm: LLM
-    _cache: TTLCache = TTLCache(maxsize=512, ttl=60)
+
+    # ✅ FIX: use default_factory for mutable defaults
+    _cache: TTLCache = field(default_factory=lambda: TTLCache(maxsize=512, ttl=60))
 
     async def answer(self, question: str) -> tuple[str, List[Citation]]:
         if question in self._cache:
